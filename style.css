@@ -1,0 +1,787 @@
+/*
+  운명학풀이 — 정적 사이트 스타일
+  팔레트: 차가운 오프화이트 · 먹색 · 낙관 인주색(印朱).
+  모서리는 전면 각짐으로 통일한다.
+*/
+
+:root {
+  --paper: #fbfbfa;
+  --paper-2: #f3f3f1;
+  --white: #ffffff;
+  --ink: #16161a;
+  --ink-soft: #55555c;
+  --ink-faint: #6e6e76;
+  --line: #e2e2de;
+  --seal: #9c2b21;
+  --myeongjo: 'Nanum Myeongjo', Batang, serif;
+  --sans: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(156, 43, 33, 0.16);
+}
+
+:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 2px;
+}
+
+.myeongjo {
+  font-family: var(--myeongjo);
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.wrap-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── 헤더 ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 251, 250, 0.93);
+  backdrop-filter: blur(8px);
+}
+
+.site-header .bar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: var(--myeongjo);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.header-link {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.header-link:hover {
+  color: var(--seal);
+}
+
+/* ── 히어로 ── */
+.hero {
+  padding: 64px 0 80px;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-family: var(--myeongjo);
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero p.lead {
+  margin: 24px 0 0;
+  max-width: 36ch;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+}
+
+.cta-row {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.05s, border-color 0.15s, color 0.15s;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--seal);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink-soft);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* 명식 카드 */
+.chart {
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 24px;
+  margin: 0;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.chart-col {
+  text-align: center;
+}
+
+.chart-label {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.chart-hanja {
+  font-family: var(--myeongjo);
+  border: 1px solid var(--line);
+  margin-top: 8px;
+  padding: 16px 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.chart-korean {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.chart-meta {
+  margin: 24px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.chart-meta dt {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.chart-meta dd {
+  margin: 4px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.chart figcaption,
+.chart-caption {
+  margin-top: 20px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+/* ── 섹션 ── */
+.band {
+  border-top: 1px solid var(--line);
+}
+
+.band-tinted {
+  background: var(--paper-2);
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section h2 {
+  font-family: var(--myeongjo);
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin: 0;
+  max-width: 20ch;
+}
+
+.steps {
+  margin-top: 56px;
+  display: grid;
+  gap: 48px;
+}
+
+.step {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  display: grid;
+  gap: 16px;
+}
+
+.step h3 {
+  font-family: var(--myeongjo);
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 700;
+  margin: 0;
+}
+
+.step p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+/* 결론 */
+.creed {
+  padding: 96px 0;
+  text-align: center;
+}
+
+.creed p {
+  font-family: var(--myeongjo);
+  font-size: 24px;
+  line-height: 1.6;
+  font-weight: 700;
+  margin: 0;
+}
+
+.creed .mark {
+  border-bottom: 2px solid var(--seal);
+  padding-bottom: 4px;
+}
+
+/* 회사소개 */
+.about-grid {
+  display: grid;
+  gap: 48px;
+}
+
+.about-body {
+  display: grid;
+  gap: 20px;
+  margin-top: 28px;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.about-body p {
+  margin: 0;
+}
+
+.about-facts {
+  margin: 36px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 16px;
+  font-size: 14.5px;
+}
+
+.fact {
+  display: flex;
+  gap: 12px;
+}
+
+.fact dt {
+  width: 112px;
+  flex: none;
+  color: var(--ink-faint);
+}
+
+.fact dd {
+  margin: 0;
+}
+
+/* ── 신청 폼 ── */
+.apply {
+  padding: 80px 0;
+  scroll-margin-top: 64px;
+}
+
+.apply h2 {
+  max-width: none;
+  text-align: center;
+}
+
+.apply .apply-lead {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+}
+
+form.apply-form {
+  margin-top: 36px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 24px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.field > label,
+.field-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.field input[type='text'],
+.field input[type='date'],
+.field input[type='time'],
+.field input[type='tel'],
+.field input[type='email'],
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  transition: border-color 0.15s;
+}
+
+.field textarea {
+  resize: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--seal);
+  outline: none;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.field input:disabled {
+  background: var(--paper-2);
+  color: var(--ink-faint);
+}
+
+.radio-row {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.radio-row label,
+.check-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--seal);
+}
+
+.consent {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.consent label {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.consent input {
+  margin-top: 5px;
+  flex: none;
+}
+
+.consent a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.consent a:hover {
+  color: var(--seal);
+}
+
+.consent .hint {
+  display: block;
+  margin-top: 6px;
+}
+
+.submit {
+  margin-top: 24px;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-foot {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+/* ── 푸터 ── */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--paper-2);
+  padding: 56px 0;
+}
+
+.site-footer .brand {
+  font-size: 17px;
+}
+
+.footer-facts {
+  margin: 24px 0 0;
+  display: grid;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.footer-facts .fact dt {
+  width: auto;
+  flex: none;
+}
+
+.footer-links {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 24px;
+  font-size: 13.5px;
+}
+
+.footer-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-links a:hover {
+  color: var(--seal);
+}
+
+.footer-note {
+  margin: 20px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+/* ── 약관 · 방침 문서 ── */
+.doc {
+  padding: 64px 0 96px;
+}
+
+.doc h1 {
+  font-family: var(--myeongjo);
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0;
+}
+
+.doc .effective {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-faint);
+}
+
+.doc .intro {
+  margin: 32px 0 0;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.doc section {
+  margin-top: 44px;
+}
+
+.doc h2 {
+  font-family: var(--myeongjo);
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 700;
+  margin: 0;
+}
+
+.doc p {
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.doc ol,
+.doc ul {
+  margin: 14px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.doc table {
+  margin-top: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  text-align: left;
+}
+
+.doc thead tr {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc th {
+  padding: 12px 20px 12px 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.doc td {
+  padding: 12px 20px 12px 0;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc .table-scroll {
+  overflow-x: auto;
+}
+
+.doc .doc-foot {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--ink-faint);
+}
+
+.doc .doc-foot p {
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── 완료 안내 ── */
+.done {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.done h1 {
+  font-family: var(--myeongjo);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.done p {
+  margin: 16px 0 0;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.done .btn {
+  margin-top: 36px;
+}
+
+/* ── 반응형 ── */
+@media (min-width: 640px) {
+  .wrap,
+  .wrap-narrow {
+    padding: 0 32px;
+  }
+  .hero {
+    padding: 96px 0 112px;
+  }
+  .hero h1 {
+    font-size: 46px;
+  }
+  .hero p.lead {
+    font-size: 17px;
+  }
+  .chart {
+    padding: 32px;
+  }
+  .chart-hanja {
+    font-size: 32px;
+  }
+  .section,
+  .apply {
+    padding: 112px 0;
+  }
+  .section h2 {
+    font-size: 34px;
+  }
+  .step h3 {
+    font-size: 23px;
+  }
+  .creed {
+    padding: 128px 0;
+  }
+  .creed p {
+    font-size: 34px;
+  }
+  .doc {
+    padding: 96px 0 128px;
+  }
+  .doc h1 {
+    font-size: 36px;
+  }
+  .doc h2 {
+    font-size: 20px;
+  }
+  form.apply-form {
+    padding: 32px;
+  }
+  .footer-facts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 80px;
+  }
+  .hero h1 {
+    font-size: 54px;
+  }
+  .step {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 38rem);
+    gap: 64px;
+  }
+  /* 들여쓰기 리듬은 넓은 화면에서만 준다 */
+  .step:nth-child(2) {
+    margin-left: 48px;
+  }
+  .step:nth-child(3) {
+    margin-left: 96px;
+  }
+  .creed p {
+    font-size: 40px;
+  }
+  .about-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 80px;
+  }
+  .about-facts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+  }
+  .footer-facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
